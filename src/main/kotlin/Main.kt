@@ -35,6 +35,7 @@ object Main {
         override fun onMessageReceived(event: MessageReceivedEvent) {
             if (event.channel is TextChannel) {
                 if (event.member != null) DB.messageSent(event.member!!, event.channel as TextChannel)
+                if event.message == ";-;" (return)
                 handler.process(event.message, DB.getPrefix(event.guild)).send(event.channel as TextChannel)
             }
         }
